@@ -1,43 +1,224 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Portfolio</title>
-  <style>
-    body { font-family: Arial; margin: 0; }
-    header { background: #333; color: white; padding: 20px; text-align: center; }
-    section { padding: 20px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Satyam Gawande | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    width:100%;
+    background:rgba(0,0,0,0.5);
+    backdrop-filter:blur(10px);
+    padding:15px;
+    text-align:center;
+    z-index:1000;
+}
+
+nav a{
+    color:white;
+    margin:0 15px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#38bdf8;
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
+    animation:fadeIn 2s ease-in-out;
+}
+
+.hero h1{
+    font-size:3rem;
+    background:linear-gradient(90deg,#38bdf8,#6366f1);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    margin-top:10px;
+    font-size:1.2rem;
+}
+
+/* SECTION */
+section{
+    padding:80px 20px;
+    max-width:1000px;
+    margin:auto;
+}
+
+/* CARDS */
+.card{
+    background:#1e293b;
+    padding:20px;
+    margin:20px 0;
+    border-radius:15px;
+    transition:0.4s;
+    transform:translateY(50px);
+    opacity:0;
+}
+
+.card:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px #38bdf8;
+}
+
+/* SKILLS */
+.skills span{
+    display:inline-block;
+    background:#334155;
+    margin:5px;
+    padding:10px 15px;
+    border-radius:20px;
+    transition:0.3s;
+}
+
+.skills span:hover{
+    background:#38bdf8;
+}
+
+/* PROJECT (EMPTY) */
+.project-box{
+    height:150px;
+    border:2px dashed #38bdf8;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:10px;
+    opacity:0.5;
+}
+
+/* ANIMATION */
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+.show{
+    transform:translateY(0);
+    opacity:1;
+    transition:1s;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#020617;
+}
+</style>
 </head>
 
 <body>
 
-<header>
-  <h1>Your Name</h1>
-  <p>CSE Student | Developer</p>
-</header>
+<nav>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+</nav>
 
-<section>
-  <h2>About Me</h2>
-  <p>I am a final year CSE student...</p>
+<div class="hero">
+    <h1>Satyam Gawande</h1>
+    <p>Java Full Stack Developer</p>
+</div>
+
+<section id="about">
+    <h2>About Me</h2>
+    <div class="card">
+        <p>
+        A proactive final-year Computer Science Engineering student with expertise in Java full-stack development 
+        and a strong interest in AI & ML. Skilled in building scalable applications and solving real-world problems.
+        </p>
+    </div>
 </section>
 
-<section>
-  <h2>Projects</h2>
-  <ul>
-    <li>Emergency App</li>
-    <li>Job Portal</li>
-  </ul>
+<section id="skills">
+    <h2>Skills</h2>
+    <div class="card skills">
+        <span>Java</span>
+        <span>Spring</span>
+        <span>Hibernate</span>
+        <span>Python</span>
+        <span>JavaScript</span>
+        <span>React</span>
+        <span>Node.js</span>
+        <span>SQL</span>
+        <span>MongoDB</span>
+    </div>
 </section>
 
-<section>
-  <h2>Skills</h2>
-  <p>HTML, CSS, JavaScript, Python, SQL</p>
+<section id="experience">
+    <h2>Experience</h2>
+
+    <div class="card">
+        <h3>AI & ML Intern - YBI Foundation</h3>
+        <p>Worked on machine learning models, NLP tasks, TensorFlow & PyTorch.</p>
+    </div>
+
+    <div class="card">
+        <h3>AI Intern - Future Point Technologies</h3>
+        <p>Built ML models, data preprocessing, prediction systems.</p>
+    </div>
+
+    <div class="card">
+        <h3>Web Development Intern</h3>
+        <p>Developed responsive websites using HTML, CSS, JavaScript.</p>
+    </div>
+
 </section>
 
-<section>
-  <h2>Resume</h2>
-  <a href="resume.pdf" download>Download Resume</a>
+<section id="projects">
+    <h2>Projects</h2>
+
+    <div class="card project-box">
+        <p>🚧 Projects coming soon...</p>
+    </div>
+
 </section>
+
+<footer>
+    <p>© 2026 Satyam Gawande</p>
+</footer>
+
+<script>
+const cards = document.querySelectorAll('.card');
+
+window.addEventListener('scroll', () => {
+    cards.forEach(card => {
+        const top = card.getBoundingClientRect().top;
+        if(top < window.innerHeight - 50){
+            card.classList.add('show');
+        }
+    });
+});
+</script>
 
 </body>
 </html>
